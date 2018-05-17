@@ -21,7 +21,7 @@ from .views import time_now,lst_folders,addres
 
 
 urlpatterns = [
-    path('now/',time_now,name = 'Now is:'),
+    path('now/',time_now,name = "Now is:"),
     path('config/',addres),
     path('browse/',lst_folders),
 
