@@ -7,10 +7,15 @@ import os
 
 def time_now(request):
     now = datetime.strftime(datetime.now(), "%Y.%m.%d %H:%M:%S")
-    return HttpResponse(""% now)
+    return HttpResponse(now)
+    
 def lst_folders(request):
-    direct = [ i for i in os.listdir(".") if os.path.isdir(i)]
-    return HttpResponse(direct)
+    """ каталог из которого будем брать файлы"""
+
+    directory = "/home/work/MEGA/Python/Python_Learning/9.django view/"
+    # получаем список файлов в переменную files
+    files = os.listdir(directory)
+    return HttpResponse(files)
 def addres(request):
     dct = {
     "host":"localhost",
