@@ -16,6 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from .views import time_now,lst_folders,addres
+
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('now/',time_now,name = 'Now is:'),
+    path('config/',addres),
+    path('browse/',lst_folders),
+
+
 ]
