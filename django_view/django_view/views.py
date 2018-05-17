@@ -15,7 +15,7 @@ def lst_folders(request):
 
 
     # получаем список файлов в переменную files
-    files = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    files = os.path.dirname(__file__)
     return HttpResponse(files)
 def addres(request):
     dct = {
