@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import time_now,lst_folders,addres
+from .views import time_now,lst_folders,addres, show_artists, add_artist
 
 
 
@@ -24,6 +24,8 @@ urlpatterns = [
     path('now/',time_now,name = 'Now is:'),
     path('config/',addres),
     path('browse/',lst_folders),
+    path('artists/', show_artists),
+    path('artists/add', add_artist)
 
 
 ]
