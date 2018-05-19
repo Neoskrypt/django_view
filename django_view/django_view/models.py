@@ -16,3 +16,20 @@ class Artist(models.Model):
         return Artist(name=dct.get('name'),
                       surname=dct.get('surname'),
                       birth=dct.get('birth'))
+class Song(models.Model):
+    name = models.CharField(max_length=150)
+    date_released = models.DateField()
+    author = models.ForeignKey(Artist,on_delete="")
+
+    def to_dict(self):
+        return {
+                'name':self.name,
+                'data_released':self.date_released,
+                'author':self.author
+        }
+    @staticmethod
+    def from_dict(dct:dict):
+        return Song(name=dct.get('name'),
+                    data_released = dct.get('data_released'),
+                    author = dct.get('author')
+        )

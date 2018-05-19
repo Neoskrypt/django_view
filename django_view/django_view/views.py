@@ -3,20 +3,19 @@ from django.http import JsonResponse
 from datetime import datetime
 import os
 
-from django_view.models import Artist
+from django_view.models import Artist,Song
 
 
 def time_now(request):
     now = datetime.strftime(datetime.now(), "%Y.%m.%d %H:%M:%S")
-    return HttpResponse(now)
+    return HttpResponse("Now is: {}".format(now))
 
 
 def lst_folders(request):
     """ каталог из которого будем брать файлы"""
 
-    directory = "/home/work/MEGA/Python/Python_Learning/9.django view/"
     # получаем список файлов в переменную files
-    files = os.listdir(directory)
+    files = os.path.dirname(__file__)
     return HttpResponse(files)
 
 
@@ -43,7 +42,20 @@ def add_artist(request):
     }
 
     a = Artist.from_dict(data)
-
     a.save()
-
     return HttpResponse([a.to_dict()])
+
+def show_songs(request):
+    songs = list(Song.object.all())
+    response = [b.to_dict() for b in songs]
+    return HttpResponse(response)
+
+def add_song(request):
+    data = {
+        'name':request.GET.get('name'),
+        'date_released':request.GET.get('data_released'),
+        'author':request.GET.get('author')
+        }
+    b = Song.from_dict(data)
+    b.save()
+    return HttpResponse([b.to_dict()])

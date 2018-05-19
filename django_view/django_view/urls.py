@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import time_now,lst_folders,addres,show_artists,add_artist
-
+from .views import add_song,show_songs
 
 urlpatterns = [
     path('now/',time_now),
     path('config/',addres),
     path('browse/',lst_folders),
     path('artists/', show_artists),
-    path('artists/add', add_artist)
+    path('artists/add', add_artist),
+    path('song/add',add_song),
+    path('songs/',show_songs)
 
 ]
