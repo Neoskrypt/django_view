@@ -9,13 +9,15 @@ class Artist(models.Model):
     def to_dict(self):
         return {'name': self.name,
                 'surname': self.surname,
-                'birth': str(self.birth)}
+                'birth': str(self.birth),
+                "id":str(self.id)}
 
     @staticmethod
     def from_dict(dct: dict):
         return Artist(name=dct.get('name'),
                       surname=dct.get('surname'),
                       birth=dct.get('birth'))
+
 class Song(models.Model):
     name = models.CharField(max_length=150)
     date_released = models.DateField()
@@ -25,7 +27,7 @@ class Song(models.Model):
         return {
                 'name':self.name,
                 'date_released':self.date_released,
-                'author':self.author
+                'author':self.author.to_dict()
         }
     @staticmethod
     def from_dict(dct:dict):

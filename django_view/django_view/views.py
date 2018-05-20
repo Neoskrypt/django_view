@@ -44,18 +44,20 @@ def add_artist(request):
     a = Artist.from_dict(data)
     a.save()
     return HttpResponse([a.to_dict()])
-
+##########################################################################
 def show_songs(request):
-    songs = list(Song.object.all())
+    songs = list(Song.objects.all())
     response = [b.to_dict() for b in songs]
     return HttpResponse(response)
 
 def add_song(request):
+    autor = Artist.objects.get(pk=int(request.GET.get('author')))
     data = {
         'name':request.GET.get('name'),
         'date_released':request.GET.get('date_released'),
-        'author':request.GET.get('author')
+        'author':autor
         }
+    print(data)
     b = Song.from_dict(data)
     b.save()
     return HttpResponse([b.to_dict()])
