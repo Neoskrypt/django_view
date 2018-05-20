@@ -24,12 +24,12 @@ class Song(models.Model):
     def to_dict(self):
         return {
                 'name':self.name,
-                'data_released':self.date_released,
+                'date_released':self.date_released,
                 'author':self.author
         }
     @staticmethod
     def from_dict(dct:dict):
         return Song(name=dct.get('name'),
-                    data_released = dct.get('data_released'),
+                    date_released = dct.get('date_released'),
                     author = dct.get('author')
         )

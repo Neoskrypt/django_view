@@ -53,7 +53,7 @@ def show_songs(request):
 def add_song(request):
     data = {
         'name':request.GET.get('name'),
-        'date_released':request.GET.get('data_released'),
+        'date_released':request.GET.get('date_released'),
         'author':request.GET.get('author')
         }
     b = Song.from_dict(data)
