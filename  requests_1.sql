@@ -6,11 +6,9 @@
 --UPDATE django_view_song
 --set author_id = 1
 --where name = "Voodoo dance";
---select name as Full_Name from django_view_artist
---UNION
---select surname as Full_Name from django_view_artist
-SELECT id,name,surname,birth FROM django_view_artist
---SELECT id,birth,CONCAT(name,"",surname) as Full_Name from django_view_artist;
+
+select id,name || ' ' || surname  as full_name, birth as Birth
+from django_view_artist
 
 
 
